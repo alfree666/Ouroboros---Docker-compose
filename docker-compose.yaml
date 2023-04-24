@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+
+  ouroboros:
+    image: pyouroboros/ouroboros    
+    container_name: ouroboros
+    hostname: ouroboros
+    environment:
+      - CLEANUP=true
+      - INTERVAL=1200
+      - LOG_LEVEL=info
+      - SELF_UPDATE=true
+      - IGNORE=          # jitsi owncloud
+      - TZ=Europe/Madrid
+      - NOTIFIERS=       # "tgram://TU_API_TOKEN/TU_CHAT_ID/"
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+      
